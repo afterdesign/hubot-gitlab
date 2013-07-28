@@ -76,7 +76,7 @@ deladd = (robot, req, res) ->
     # if the ref before the commit is 00000, this is a new branch
     if /^0+$/.test(hook.before)
         message = "#{hook.user_name} pushed a new branch [#{branch}] to #{hook.repository.name} repository"
-    if hook.total_commits_count == 0
+    else if hook.total_commits_count == 0
         message = "#{hook.user_name} merged/deleted branch [#{branch}] in #{hook.repository.name} repository"
 
     robot.send user, message
